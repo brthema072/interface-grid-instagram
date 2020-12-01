@@ -8,6 +8,7 @@ import { GridCardsComponent } from './views/grid-cards/grid-cards.component';
 import { CardComponent } from './views/grid-cards/card/card.component';
 import { CardFormComponent } from './views/card-form/card-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

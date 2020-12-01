@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class GridCardsComponent implements OnInit {
 
   listCards: Array<any> =[
-    {title: "Card Title", image: "assets/sample-1.jpg", description: "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
-    {title: "Card Title", image: "assets/sample-2.jpg", description: "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
-    {title: "Card Title", image: "assets/sample-1.jpg", description: "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
-    {title: "Card Title", image: "assets/sample-2.jpg", description: "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
-    {title: "Card Title", image: "assets/sample-1.jpg", description: "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
+    {title: "Card Title", images: ["assets/sample-1.jpg"], description: "😚 I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
+    {title: "Card Title", images: ["assets/sample-2.jpg", "assets/sample-1.jpg"], description: "😚 I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
+    {title: "Card Title", images: ["assets/sample-1.jpg", "assets/sample-1.jpg"], description: "😚 I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
+    {title: "Card Title", images: ["assets/sample-2.jpg", "assets/sample-1.jpg"], description: "😚 I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
+    {title: "Card Title", images: ["assets/sample-1.jpg", "assets/sample-1.jpg"], description: "😚 I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."},
   ]
   constructor() { }
 

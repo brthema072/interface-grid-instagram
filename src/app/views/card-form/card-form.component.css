@@ -1,3 +1,11 @@
 .material-icons.prefix{
     font-size: 18pt;
 }
+
+.pSubTitleFileImages{
+    font-size: 12pt;
+}
+
+.btn-floating.btn-small.waves-effect.waves-light.red.add{
+    margin-right: 25px;
+}

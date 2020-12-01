@@ -20,6 +20,35 @@
         </div>
 
     </div>
+    <div class="row">
+        <div class="col s12">
+            <p class="pSubTitleFileImages">Adicione ou remova campos para carregar imagens!</p>
+        
+            <a class="btn-floating btn-small waves-effect waves-light red add" (click)="addImages()">
+                <i class="material-icons">add</i>
+            </a>
+            <a class="btn-floating btn-small waves-effect waves-light red clear" (click)="clearImages()">
+                <i class="material-icons">clear</i>
+            </a>
+        </div>
+    </div>
+    
+    <div class = "row" formArrayName="images">
+        <ng-container *ngFor="let image of images.controls; let i=index">
+            <div class= "file-field input-field" [formGroupName]="i">
+                <div class = "btn">
+                    <span>Browse</span>
+                    <input type = "file" formControlName="url" />
+                </div>
+                
+                <div class = "file-path-wrapper">
+                    <input class = "file-path validate" type = "text"
+                        placeholder = "Upload multiple files" />
+                </div>
+            </div>
+        </ng-container>
+        
+    </div>
     <!-- <input type="text" formControlName="image"> -->
 
     <div class="container">

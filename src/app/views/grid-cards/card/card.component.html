@@ -1,12 +1,29 @@
 <div class="card hoverable">
     <div class="card-image">
-      <img src={{card.image}}>
+      <div class="img-carousel-content">
+        <div class="carousel carousel-slider center">
+          <ng-container *ngFor="let image of card.images; let i=index">
+            <div class="carousel-item red white-text">
+              <img src="{{image}}" alt="">
+            </div>
+          </ng-container>
+          
+        </div>
+      </div>      
+      
       <span class="card-title">{{card.title}}</span>
     </div>
-    <div class="card-content" *ngIf="!isHideDescription">
+    <div class="card-content" *ngIf="isHideDescription">
       <p>{{card.description}}</p>
     </div>
     <div class="card-action">
-      <button href="#" (click)="hideDescription()" class="waves-effect waves-teal btn-flat btnHideDescription" >Ocultar Descrição</button>
+      <button href="#" (click)="hideDescription()" class="waves-effect waves-teal btn-flat btnHideDescription" >
+        <span *ngIf="isHideDescription">
+          Ocultar Descrição
+        </span>
+        <span *ngIf="!isHideDescription">
+          Exibir Descrição
+        </span>
+      </button>
     </div>
 </div>
