@@ -16,7 +16,7 @@ export class CardComponent implements OnInit, AfterViewInit  {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.card.images)
+    // console.log(this.card.images)
   }
 
   ngAfterViewInit() {

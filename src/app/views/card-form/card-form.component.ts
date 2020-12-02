@@ -27,7 +27,7 @@ export class CardFormComponent implements OnInit {
       $('.datepicker').datepicker();
     });
 
-    this.getCard();
+    // this.getCard();
   }
 
   getCard(){
@@ -69,10 +69,12 @@ export class CardFormComponent implements OnInit {
       images: this.formCard.value.images,
       date: this.formCard.value.date
     };
-
-    console.log(newCard);
-
-    // console.log(this.formCard.value)
+    
+    this.cardService.postCard(newCard).subscribe((res)=>{
+      console.log(res);
+    },(err)=>{
+      console.log(err);
+    })
   }
 
   checkPicker(){

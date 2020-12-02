@@ -9,20 +9,24 @@ import { Card } from '../model/card';
 export class CardService {
 
   apiUrl = "http://localhost/interface-instagram/";
+  // apiUrl = "http://localhost:8080/";
 
-  headers = { headers: new HttpHeaders({
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json' 
-  })}
+  // headers = { headers: new HttpHeaders({
+  //   'Access-Control-Allow-Origin': '*',
+  //   'Content-Type': 'application/json' 
+  // })}
+
+  headers = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})}
 
   constructor(private httpClient: HttpClient) { }
 
-  postCard(card: Card): Observable<Card>{
-    return this.httpClient.post<Card>(this.apiUrl, JSON.stringify(card), this.headers);
+  postCard(card: Card){
+    console.log(card)
+    return this.httpClient.post(`${this.apiUrl}`, card, this.headers);
   }
 
   getCards(): Observable<Card[]>{
-    return this.httpClient.get<Card[]>(this.apiUrl, this.headers);
+    return this.httpClient.get<Card[]>(`${this.apiUrl}`);
   }
 
 }
