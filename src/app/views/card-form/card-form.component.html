@@ -38,7 +38,7 @@
             <div class= "file-field input-field" [formGroupName]="i">
                 <div class = "btn">
                     <span>Browse</span>
-                    <input type = "file" formControlName="url" />
+                    <input type = "file" formControlName="url" name="url"  (change)="uploadFile($event)" />
                 </div>
                 
                 <div class = "file-path-wrapper">

@@ -1,8 +1,8 @@
 import { Image } from './image';
 
 export class Card{
-    tittle: string;
+    title: string;
     description: string;
-    images: Image[];
+    images?: Image[];
     date: string;    
 }
