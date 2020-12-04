@@ -1,20 +1,36 @@
-<div class="card hoverable">
+<div class="card hoverable" style="width: 118px; height: 118px;" *ngIf="deviceXs == true && deviceSm == false && deviceMd == false">
+  <div class="card-image">
+    <div class="img-carousel-content">
+      <div class="carousel carousel-slider center">
+        <img src="{{card.images[0].url}}" alt="" style="width: 118px; height: 118px;">
+        <!-- <ng-container *ngFor="let image of card.images; let i=index">
+          <div class="carousel-item white-text">
+          </div>
+        </ng-container> --> 
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="card hoverable" style="width: 233px; height: 233px;" *ngIf="deviceSm == true && deviceXs == false && deviceMd == false">
     <div class="card-image">
       <div class="img-carousel-content">
         <div class="carousel carousel-slider center">
-          <ng-container *ngFor="let image of card.images; let i=index">
-            <div class="carousel-item red white-text">
-              <img src="{{image}}" alt="">
+          <img src="{{card.images[0].url}}" alt="" style="width: 233px; height: 233px;">
+          <!-- <ng-container *ngFor="let image of card.images; let i=index">
+            <div class="carousel-item white-text">
             </div>
-          </ng-container>
+          </ng-container> -->
           
         </div>
-      </div>      
-      
-      <span class="card-title">{{card.title}}</span>
+      </div>
+
     </div>
-    <div class="card-content" *ngIf="isHideDescription">
-      <p>{{card.description}}</p>
+    <!-- <div class="card-content text-nowrap">
+      <span class="card-title">{{card.title}}</span>
+      <p *ngIf="isHideDescription">{{card.description}}</p>
+      <p class="date">{{card.date | date}}</p>
     </div>
     <div class="card-action">
       <button href="#" (click)="hideDescription()" class="waves-effect waves-teal btn-flat btnHideDescription" >
@@ -25,5 +41,28 @@
           Exibir Descrição
         </span>
       </button>
+    </div> -->
+</div>
+
+<div class="card hoverable" style="width: 300px; height: 300px" *ngIf="deviceMd == true && deviceSm == false && deviceXs == false">
+    <div class="card-image">
+      <img src="{{card.images[0].url}}" alt="" style="width: 300px; height: 300px;">
+
     </div>
+
+    <!-- <div class="card-content text-nowrap" *ngIf="isHideDescription">
+      <span class="card-title">{{card.title}}</span>
+      <p>{{card.description}}</p>
+      <p class="date">{{card.date | date}}</p>
+    </div>
+    <div class="card-action">
+      <button href="#" (click)="hideDescription()" class="waves-effect waves-teal btn-flat btnHideDescription" >
+        <span *ngIf="isHideDescription">
+          Ocultar Descrição
+        </span>
+        <span *ngIf="!isHideDescription">
+          Exibir Descrição
+        </span>
+      </button>
+    </div> -->
 </div>

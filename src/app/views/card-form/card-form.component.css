@@ -9,3 +9,8 @@
 .btn-floating.btn-small.waves-effect.waves-light.red.add{
     margin-right: 25px;
 }
+
+.waves-effect.waves-light.btn.modal-trigger{
+    margin-top: 50px;
+    margin-left: 20px;
+}

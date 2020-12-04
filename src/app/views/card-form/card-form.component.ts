@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray  } from '@angular/forms';
+// import { format } from 'path';
 import { Card } from 'src/app/common/model/card';
 import { CardService } from 'src/app/common/service/card.service';
 declare var $: any;
@@ -20,6 +21,12 @@ export class CardFormComponent implements OnInit {
     date: ['', [Validators.required]],
   });
 
+  formClient = this.fb.group({
+    name: ['', [Validators.required]],
+    image: ['', [Validators.required]],
+    logo: ['', [Validators.required]],
+  });
+
   images = this.formCard.get('images') as FormArray;
 
   fileName: string;
@@ -28,8 +35,28 @@ export class CardFormComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     $(document).ready(function(){
-      $('.datepicker').datepicker();
+      $('.modal').modal();
+    });
+
+
+    let year = this.currentDate.getFullYear();
+    let month = this.currentDate.getMonth();
+    let day = this.currentDate.getDate();
+    $(document).ready(function(){
+      $('.datepicker').datepicker({
+        format: 'd/mm/yyyy',
+        setDefaultDate: true,
+        defaultDate: new Date(year, month, day),
+        i18n:{
+          months: ['Janeiro','Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+          monthsShort: ['jan', 'fev', 'mar', 'abr', 'maio', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+          weekdays: ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira'],
+          weekdaysShort: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+          weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
+        }
+      });
     });
   }
 
@@ -49,6 +76,13 @@ export class CardFormComponent implements OnInit {
         // console.log("Error: ", err);
       })
     }
+  }
+  uploadFileImage(event){
+    
+  }
+
+  uploadFileLogo(event){
+    
   }
 
 
@@ -94,9 +128,26 @@ export class CardFormComponent implements OnInit {
     })
   }
 
+  onSubmitClient(){
+    console.log(this.formClient.value)
+  }
+
   checkPicker(){
     if($('.datepicker').val() != undefined){
       this.formCard.value.date = $('.datepicker').val();
+      let fullDate = this.formCard.value.date.split("/", 3);
+      let year = fullDate[2];
+      let month = fullDate[1];
+      let day = fullDate[0];
+      let hours = new Date().getHours();
+      let minutes = new Date().getMinutes();
+      let seconds = new Date().getSeconds();
+
+      let newDate: any = year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds; 
+      
+      newDate = new Date(newDate);
+
+      this.formCard.value.date = newDate;
     }
     
     // console.log(console.log($('.datepicker').val()));

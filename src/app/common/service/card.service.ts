@@ -33,8 +33,8 @@ export class CardService {
     return this.httpClient.get<Card[]>(`${this.apiUrl}/getCards.php`);
   }
 
-  getImages(): Observable<Image[]>{
-    return this.httpClient.get<Image[]>(`${this.apiUrl}/getImages.php`);
+  getImagesByCardId(cardId: any): Observable<Image[]>{
+    return this.httpClient.get<Image[]>(`${this.apiUrl}/getImages.php?cardId=${cardId}`);
   }
 
 }

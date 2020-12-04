@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, AfterViewInit  } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, OnDestroy  } from '@angular/core';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 declare var $: any;
 
 @Component({
@@ -6,18 +8,27 @@ declare var $: any;
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit, AfterViewInit  {
+export class CardComponent implements OnInit, AfterViewInit, OnDestroy  {
 
   @Input() card: any;
 
   isHideDescription: boolean = true;
 
+  deviceXs: boolean;
+  deviceSm: boolean;
+  deviceMd: boolean;
+  mediaSub: Subscription;
+  
   hrefCarousel = ["#one!", "#two!", "#three!", "#four!", "#five!"]
-  constructor() { }
+  constructor(public mediaObserver: MediaObserver) { }
 
   ngOnInit(): void {
-    // console.log(this.card.images)
-    // console.log(this.card)
+
+    this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
+      this.deviceXs = result.mqAlias === 'xs' ? true : false;
+      this.deviceSm = result.mqAlias === 'sm' ? true : false;
+      this.deviceMd = result.mqAlias === 'md' ? true : false;
+    });
   }
 
   ngAfterViewInit() {
@@ -32,5 +43,9 @@ export class CardComponent implements OnInit, AfterViewInit  {
 
   hideDescription(): void{
     this.isHideDescription = !this.isHideDescription;
+  }
+
+  ngOnDestroy(){
+    this.mediaSub.unsubscribe();
   }
 }

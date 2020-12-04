@@ -20,35 +20,40 @@ export class GridCardsComponent implements OnInit {
 
   cards = [];
   images = [];
+
+  isLoad: boolean = true;
   
   constructor(private cardService: CardService) { }
 
   ngOnInit(): void {
-    this.cardService.getCards().subscribe((res: any)=>{
-      for(let i = 0; i < res.length; i++){
-        // for(let j = 0; j < this.images.length; j++){
-        //   console.log(this.images[j].cardId)
-        // }
-        this.cards.push({
-          title: res[i].titulo,
-          description: res[i].descricao,
-          date: res[i].data,
-          images: this.images
-        })
-      }
-      
 
-    },(err)=>{
-      console.log(err);
-    });
+    setTimeout(() => {
+      this.cardService.getCards().subscribe((card: any)=>{
+        for(let i = 0; i < card.length; i++){
+          // console.log(card[i].id)
+          
+          this.cardService.getImagesByCardId(card[i].id).subscribe((image: any)=>{
+  
+            this.cards.push({
+              title: card[i].titulo,
+              description: card[i].descricao,
+              date: card[i].data,
+              images: image
+            })
+  
+          },(err)=>{
+            console.log(err);
+          });
+        } 
+        // console.log(this.cards)
+      },(err)=>{
+        console.log(err);
+      });
 
-    this.cardService.getImages().subscribe((res: any)=>{
-      for(let i = 0; i < res.length; i++){
-        this.images.push({url: res[i].url, cardId: res[i].card_id})
-      }
-    },(err)=>{
-      console.log(err);
-    });
+      this.isLoad = false;
+
+    }, 2000);
+    
   }
 
 }
